@@ -116,7 +116,13 @@ Getting currency values for BTC in USD, EUR, GBP from CryptoCompare
 
 ```
 
+## Building
 
+You need to inject version and compiled at link time:
+
+```
+go build -ldflags "-X github.com/riussi/cryptovalues/cmd.compiled=20171031-141614 -X github.com/riussi/cryptovalues/cmd.version=1.0.0"
+```
 
 ## License
 
