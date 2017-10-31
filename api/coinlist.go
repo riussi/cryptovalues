@@ -29,7 +29,7 @@ const ApiBaseUrl = "https://min-api.cryptocompare.com"
 
 func GetCoinlist() CoinList {
 	// Construct the API URL
-	var url = ApiBaseUrl + "/data/all/coinlist"
+	var url = ApiBaseUrl + "/data/all/coinlist?extraParams=cryptovalues"
 
 	// Get the API response#
 	resp, err := http.Get(url)
@@ -64,7 +64,7 @@ func GetCurrencyDetails(symbol string) Datum {
 
 func GetCurrencyValues(fromCurrencies *[]string, toCurrencies *[]string) {
 	// Construct the API URL
-	var url = ApiBaseUrl + "/data/pricemulti?fsyms=" + strings.Join(*fromCurrencies, ",") + "&tsyms=" + strings.Join(*toCurrencies, ",")
+	var url = ApiBaseUrl + "/data/pricemulti?fsyms=" + strings.Join(*fromCurrencies, ",") + "&tsyms=" + strings.Join(*toCurrencies, ",") + "&extraParams=cryptovalues"
 
 	// Get the API response#
 	resp, err := http.Get(url)
