@@ -18,4 +18,4 @@ build-linux:
 
 build-windows:
 	GOOS=windows $(BUILDTOOL) build -ldflags $(LDFLAGS)
-	mv cryptovalues.exe cryptovaluesn-win-$(VERSIONSTRING).exe
+	mv cryptovalues.exe cryptovalues-win-$(VERSIONSTRING).exe
