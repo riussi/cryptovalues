@@ -4,7 +4,7 @@ CLI-tool to get cryptocurrency info from the [CryptoCompare API](https://min-api
 ## Usage
 
 ```
-$./cryptovalues
+$ cryptovalues                                                                                                  
 Get latest cryptocurrency info from CryptoCompare
 
 Usage:
@@ -15,12 +15,14 @@ Available Commands:
   help        Help about any command
   list        list all available cryptocurrencies
   values      Get current values
+  version     shows the application version
 
 Flags:
       --config string   config file (default is $HOME/.cryptovalues.yaml)
   -h, --help            help for cryptovalues
 
 Use "cryptovalues [command] --help" for more information about a command.
+
 ```
 
 ## list
@@ -30,7 +32,7 @@ List command returns the list of available cryptocurrencies in the API.
 **Usage:**
 
 ```
-$./cryptovalues list --help
+$ cryptovalues list --help                                                                                     
 Lists all the available cryptocurrency symbols.
 
 Usage:
@@ -41,6 +43,7 @@ Flags:
 
 Global Flags:
       --config string   config file (default is $HOME/.cryptovalues.yaml)
+
 ```
 
 
@@ -52,7 +55,7 @@ Shows the information available in the API for a single currency.
 **Usage:**
 
 ```
-$./cryptovalues details --help
+$ cryptovalues details --help                                                                                  
 Show the details of a single cryptocurrency.
 
 Usage:
@@ -64,12 +67,13 @@ Flags:
 
 Global Flags:
       --config string   config file (default is $HOME/.cryptovalues.yaml)
+
 ```
 
 **Example:**
 
 ```
-$./cryptovalues details -s ETH
+$ cryptovalues details -s ETH
 Details for ETH
 - Symbol:            ETH
 - Coin name:         Ethereum
@@ -85,7 +89,7 @@ Details for ETH
 **Usage:**
 
 ```
-$./cryptovalues values --help
+$ cryptovalues values --help                                                                                    
 Get current values
 
 Usage:
@@ -98,6 +102,7 @@ Flags:
 
 Global Flags:
       --config string   config file (default is $HOME/.cryptovalues.yaml)
+
 ```
 
 
@@ -105,23 +110,28 @@ Global Flags:
 **Example:**
 
 ```
-$./cryptovalues values -f BTC -t "USD, EUR, GBP"
-Getting currency values for BTC in USD, EUR, GBP from CryptoCompare
+$ cryptovalues values --from "ETH,BTC" --to "EUR,USD,GBP" 
+Getting currency values for ETH, BTC in EUR, USD, GBP from CryptoCompare
 
-2017-10-31 13:46:28.7035289 +0100 CET m=+0.443470500
+2017-11-01 11:18:17.606791 +0100 CET m=+1.648043638
 
-1.0 BTC -> 4714.31 GBP
-1.0 BTC -> 6208.79 USD
-1.0 BTC -> 5354.35 EUR
+1.0 ETH -> 301.03 USD
+1.0 ETH -> 228.89 GBP
+1.0 ETH -> 261.7 EUR
+
+1.0 BTC -> 5649.77 EUR
+1.0 BTC -> 6521.97 USD
+1.0 BTC -> 4971.52 GBP
+
 
 ```
 
 ## Building
 
-You need to inject version and compiled at link time:
+You need to inject the version-string at link time:
 
 ```
-go build -ldflags "-X github.com/riussi/cryptovalues/cmd.compiled=20171031-141614 -X github.com/riussi/cryptovalues/cmd.version=1.0.0"
+go build -ldflags "-X github.com/riussi/cryptovalues/cmd.version=1.0.2-`date -u +%Y%m%d.%H%M%S`"
 ```
 
 ## License

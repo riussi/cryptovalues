@@ -23,7 +23,6 @@ import (
 // These are injected at link time
 var (
 	version  string
-	compiled string
 )
 
 var versionCmd = &cobra.Command{
@@ -35,7 +34,7 @@ var versionCmd = &cobra.Command{
 }
 
 func printVersion() {
-	fmt.Printf("cryptovalues v%s - Compiled %v\n\n", version, compiled)
+	fmt.Printf("cryptovalues v%s\n\n", version)
 }
 
 func init() {
