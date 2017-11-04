@@ -21,7 +21,7 @@ import (
 	"net/http"
 	"os"
 	"strings"
-
+ "strconv"
 	"github.com/Jeffail/gabs"
 )
 
@@ -85,8 +85,20 @@ func GetCurrencyValues(fromCurrencies *[]string, toCurrencies *[]string) {
 	// Print out the results
 	for _, fromCurrency := range *fromCurrencies {
 		children, _ := jsonParsed.S(fromCurrency).ChildrenMap()
+		fmt.Printf("1.0 %s = ", fromCurrency)
+		i := 0
 		for key, child := range children {
-			fmt.Printf("1.0 %s -> %v %s\n", fromCurrency, child, key)
+			if i != 0 && i != len(children) {
+				fmt.Print(", ")
+			}
+			value := child.String()
+			f, err := strconv.ParseFloat(value, 32)
+			if err != nil {
+				fmt.Printf("Error parsing result: %v", child)
+				continue
+			}
+			fmt.Printf("%8.2f %s", f, key)
+			i++
 		}
 		fmt.Println()
 	}
