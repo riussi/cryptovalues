@@ -27,7 +27,7 @@ import (
 
 // TODO add all supported fiat currency symbols
 var AcceptedFiatCurrencies = []string{
-	"EUR", "USD", "GBP",
+	"EUR", "USD", "GBP", "SEK", "CAD", "AUD", "HKD", "JPY", "NOK", "DKK", "RUB",
 }
 
 var valuesCmd = &cobra.Command{
@@ -36,6 +36,7 @@ var valuesCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		from := viper.GetString("values.from")
 		to := viper.GetString("values.to")
+		amount := viper.GetFloat64("values.amount")
 
 		if len(from) == 0 || len(to) == 0 {
 			cmd.Usage()
@@ -67,7 +68,7 @@ var valuesCmd = &cobra.Command{
 		fmt.Printf("Getting currency values for %s in %s from CryptoCompare\n\n%s\n\n", strings.Join(fromCurrencies, ", "), strings.Join(toCurrencies, ", "), start)
 
 		// Get the actual values from the API
-		api.GetCurrencyValues(&fromCurrencies, &toCurrencies)
+		api.GetCurrencyValues(&fromCurrencies, &toCurrencies, amount)
 	},
 }
 
@@ -77,8 +78,13 @@ func init() {
 	// Setup the from and to flags and also bind to config-file values with viper.
 	valuesCmd.Flags().StringP("from", "f", "", "comma-separated source currency list. Example: ETH,BTC")
 	valuesCmd.Flags().StringP("to", "t", "", "comma-separated target currency list. Example: EUR,USD")
+	valuesCmd.Flags().Float64P("amount", "a", 1.0, "amount to use for conversion.")
 	viper.BindPFlag("values.from", valuesCmd.Flags().Lookup("from"))
 	viper.BindPFlag("values.to", valuesCmd.Flags().Lookup("to"))
+	viper.BindPFlag("values.amount", valuesCmd.Flags().Lookup("amount"))
+	viper.SetDefault("values.amount", 1.0)
+	viper.SetDefault("values.from", "BTC,ETH")
+	viper.SetDefault("values.to", "EUR,USD,GBP")
 }
 
 // Check that all given currency symbols are valid
