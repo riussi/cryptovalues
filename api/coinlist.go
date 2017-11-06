@@ -62,7 +62,7 @@ func GetCurrencyDetails(symbol string) Datum {
 	return data
 }
 
-func GetCurrencyValues(fromCurrencies *[]string, toCurrencies *[]string) {
+func GetCurrencyValues(fromCurrencies *[]string, toCurrencies *[]string, amount float64) {
 	// Construct the API URL
 	var url = ApiBaseUrl + "/data/pricemulti?fsyms=" + strings.Join(*fromCurrencies, ",") + "&tsyms=" + strings.Join(*toCurrencies, ",") + "&extraParams=cryptovalues"
 
@@ -85,7 +85,7 @@ func GetCurrencyValues(fromCurrencies *[]string, toCurrencies *[]string) {
 	// Print out the results
 	for _, fromCurrency := range *fromCurrencies {
 		children, _ := jsonParsed.S(fromCurrency).ChildrenMap()
-		fmt.Printf("1.0 %s = ", fromCurrency)
+		fmt.Printf("%8.2f %s = ", amount, fromCurrency)
 		i := 0
 		for key, child := range children {
 			if i != 0 && i != len(children) {
@@ -97,7 +97,7 @@ func GetCurrencyValues(fromCurrencies *[]string, toCurrencies *[]string) {
 				fmt.Printf("Error parsing result: %v", child)
 				continue
 			}
-			fmt.Printf("%8.2f %s", f, key)
+			fmt.Printf("%8.2f %s", f * amount, key)
 			i++
 		}
 		fmt.Println()
