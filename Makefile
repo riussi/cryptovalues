@@ -1,6 +1,6 @@
-VERSION=1.0.4
+VERSION=1.0.5
 
-BUILDTOOL=govendor
+BUILDTOOL=go
 VERSIONSTRING=$(VERSION)-`date -u +%Y%m%d.%H%M%S`
 LDFLAGS="-X github.com/riussi/cryptovalues/cmd.compiled=`date -u +%Y%m%d.%H%M%S` -X github.com/riussi/cryptovalues/cmd.version=$(VERSIONSTRING)"
 
