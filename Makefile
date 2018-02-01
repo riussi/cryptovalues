@@ -8,8 +8,10 @@ default: all
 
 all: osx linux windows
 
-osx:
+homebrew:
 	GOOS=darwin $(BUILDTOOL) build -ldflags $(LDFLAGS)
+
+osx: homebrew
 	mv cryptovalues cryptovalues-osx-$(VERSIONSTRING)
 
 linux:
