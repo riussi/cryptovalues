@@ -1,0 +1,24 @@
+image: registry.gitlab.com/jris-docker-ci-images/docker-ci-golang:latest
+
+stages:
+  - test
+  - build
+
+lint_code:
+  stage: test
+  allow_failure: yes
+  script:
+    - make lint
+
+unit_tests:
+  stage: test
+  script:
+    - make test
+
+build:
+  stage: build
+  script:
+    - make build-all
+  artifacts:
+    paths:
+      - cryptovalues-*
