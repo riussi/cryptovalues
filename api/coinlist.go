@@ -17,12 +17,12 @@ package api
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/Jeffail/gabs"
 	"io/ioutil"
 	"net/http"
 	"os"
+	"strconv"
 	"strings"
- "strconv"
-	"github.com/Jeffail/gabs"
 )
 
 const ApiBaseUrl = "https://min-api.cryptocompare.com"
@@ -97,7 +97,7 @@ func GetCurrencyValues(fromCurrencies *[]string, toCurrencies *[]string, amount 
 				fmt.Printf("Error parsing result: %v", child)
 				continue
 			}
-			fmt.Printf("%8.2f %s", f * amount, key)
+			fmt.Printf("%8.2f %s", f*amount, key)
 			i++
 		}
 		fmt.Println()

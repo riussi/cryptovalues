@@ -15,9 +15,9 @@
 package cmd
 
 import (
-	api "github.com/riussi/cryptovalues/api"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
+	api "gitlab.com/juha.ristolainen/cryptovalues/api"
 
 	"fmt"
 	"os"

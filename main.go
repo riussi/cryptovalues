@@ -14,7 +14,7 @@
 
 package main
 
-import "github.com/riussi/cryptovalues/cmd"
+import "gitlab.com/juha.ristolainen/cryptovalues/cmd"
 
 func main() {
 	cmd.Execute()

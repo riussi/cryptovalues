@@ -22,7 +22,7 @@ import (
 
 // These are injected at link time
 var (
-	version  string
+	version string
 )
 
 var versionCmd = &cobra.Command{

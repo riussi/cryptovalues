@@ -20,9 +20,9 @@ import (
 
 	"time"
 
-	"github.com/riussi/cryptovalues/api"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
+	"gitlab.com/juha.ristolainen/cryptovalues/api"
 )
 
 // TODO add all supported fiat currency symbols
