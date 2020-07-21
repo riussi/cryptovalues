@@ -42,7 +42,7 @@ brews:
       tap:
         owner: riussi
         name: cryptovalues-tap
-      url_template: "https://github.com/riussi/cryptovalues/releases/{{ .Tag }}/{{ .ArtifactName }}"
+      url_template: "https://github.com/riussi/cryptovalues/releases/tag/{{ .Tag }}/{{ .ArtifactName }}"
       commit_author:
         name: goreleaserbot
         email: juha@riussi.eu
