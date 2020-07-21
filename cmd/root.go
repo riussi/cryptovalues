@@ -21,7 +21,7 @@ import (
 	"github.com/mitchellh/go-homedir"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
-	api "gitlab.com/juha.ristolainen/cryptovalues/api"
+	api "github.com/riussi/cryptovalues/api"
 )
 
 var cfgFile string

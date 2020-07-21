@@ -14,8 +14,21 @@
 
 package main
 
-import "gitlab.com/juha.ristolainen/cryptovalues/cmd"
+import "github.com/riussi/cryptovalues/cmd"
+
+// These are injected at link time by goreleaser
+var (
+	version = "dev"
+	commit  = "none"
+	date    = "unknown"
+	builtBy = "unknown"
+)
 
 func main() {
+	// Pass these to cmd-packege for version command.
+	cmd.Version = version
+	cmd.Commit = commit
+	cmd.Date = date
+	cmd.BuiltBy = builtBy
 	cmd.Execute()
 }

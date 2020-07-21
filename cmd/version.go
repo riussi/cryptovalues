@@ -20,9 +20,11 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// These are injected at link time
 var (
-	version string
+	Version = ""
+	Commit  = ""
+	Date    = ""
+	BuiltBy = ""
 )
 
 var versionCmd = &cobra.Command{
@@ -34,7 +36,7 @@ var versionCmd = &cobra.Command{
 }
 
 func printVersion() {
-	fmt.Printf("cryptovalues v%s\n\n", version)
+	fmt.Printf("cryptovalues %s, commit %s, built at %s by %s", Version, Commit, Date, BuiltBy)
 }
 
 func init() {

@@ -19,7 +19,7 @@ import (
 	"sort"
 
 	"github.com/spf13/cobra"
-	api "gitlab.com/juha.ristolainen/cryptovalues/api"
+	api "github.com/riussi/cryptovalues/api"
 )
 
 // listCmd represents the list command

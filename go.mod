@@ -1,4 +1,6 @@
-module gitlab.com/juha.ristolainen/cryptovalues
+module github.com/riussi/cryptovalues
+
+go 1.14
 
 require (
 	github.com/Jeffail/gabs v1.1.0

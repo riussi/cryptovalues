@@ -22,7 +22,7 @@ import (
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
-	"gitlab.com/juha.ristolainen/cryptovalues/api"
+	"github.com/riussi/cryptovalues/api"
 )
 
 // TODO add all supported fiat currency symbols
