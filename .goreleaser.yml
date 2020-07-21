@@ -47,7 +47,6 @@ brews:
         name: goreleaserbot
         email: juha@riussi.eu
       folder: Formula
-      skip_upload: true
       test: |
         system "#{bin}/cryptovalues version"
 snapshot:
