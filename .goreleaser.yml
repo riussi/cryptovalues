@@ -37,18 +37,6 @@ archives:
 checksum:
   name_template: 'checksums.txt'
   algorithm: sha256
-brews:
-    - name: cryptovalues
-      tap:
-        owner: riussi
-        name: cryptovalues-tap
-      url_template: "https://github.com/riussi/cryptovalues/releases/tag/{{ .Tag }}/{{ .ArtifactName }}"
-      commit_author:
-        name: goreleaserbot
-        email: riussi@duck.com
-      folder: Formula
-      test: |
-        system "#{bin}/cryptovalues version"
 snapshot:
   name_template: "{{ .Tag }}-next"
 changelog:
